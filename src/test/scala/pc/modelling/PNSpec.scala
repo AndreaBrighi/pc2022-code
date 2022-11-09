@@ -41,6 +41,12 @@ class PNSpec extends AnyFunSuite {
     pnME.next(MSet(T, T)) shouldBe Set(expected)
   }
 
+  test("PN for mutual exclusion should properly generate the possible transitions in the mutual exclusion multiple release") {
+    val expected = List(MSet(C, T, T), MSet(T, T), MSet(C, T), MSet(T), MSet(C), MSet())
+    pnME.paths(MSet(C, T, T), 6).toSet shouldBe Set(expected)
+  }
+
+
 
 
 

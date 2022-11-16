@@ -1,4 +1,4 @@
 *.class
 target
-/.idea/
-/.bsp/
+.idea
+.bsp

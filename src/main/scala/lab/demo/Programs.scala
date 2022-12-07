@@ -116,7 +116,13 @@ object Demo12 extends Simulation[Main12]
 class Main13 extends AggregateProgramSkeleton {
   override def main() = foldhoodPlus(0)(_+_){nbr{1}}
 }
+
 object Demo13 extends Simulation[Main13]
+
+class Main17 extends AggregateProgramSkeleton {
+  override def main() = foldhoodPlus(Double.MaxValue)(_ min _){nbrRange}
+}
+object Demo17 extends Simulation[Main17]
 
 class Main14 extends AggregateProgramSkeleton {
   import Builtins.Bounded.of_i
@@ -131,6 +137,8 @@ class Main15 extends AggregateProgramSkeleton {
 object Demo15 extends Simulation[Main15]
 
 class Main16 extends AggregateProgramSkeleton {
-  override def main() = rep(Double.MaxValue){ d => mux[Double](sense1){0.0}{minHoodPlus(nbr{d}+nbrRange)} }
+
+  def gradient(src: Boolean): Double = rep(Double.MaxValue){ d => mux[Double](src){0.0}{minHoodPlus(nbr{d}+nbrRange)} }
+  override def main() = branch(sense2)(0.0)(gradient(sense1))
 }
 object Demo16 extends Simulation[Main16]

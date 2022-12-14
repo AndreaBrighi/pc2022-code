@@ -21,7 +21,7 @@ object TryQMatrix extends App:
   )
 
   val q0 = rl.qFunction
-  println(rl.show(q0.vFunction,"%2.1f"))
+  println(rl.show(q0.vFunction,"%4.1f"))
   val q1 = rl.makeLearningInstance().learn(20000,100,q0)
-  println(rl.show(q1.vFunction,"%2.1f"))
+  println(rl.show(q1.vFunction,"%4.1f"))
   println(rl.show(s => actionToString(q1.bestPolicy(s)),"%7s"))
